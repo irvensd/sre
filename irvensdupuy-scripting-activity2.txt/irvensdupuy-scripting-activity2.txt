@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+DATE = `date + '%Y%m%d'`
+
+LOG_PATH=/home/ec2-user/sre/irvensdupuy-scripting-activity2.txt
+LOGFILE=$LOG_PATH/scripting1$DATE.txt
+
+echo $LOGFILE
+
