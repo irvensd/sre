@@ -1,10 +1,10 @@
+
 #!/bin/bash
 
+# Author : Irvens Dupuy 
 
-DATE = `date + '%Y%m%d'`
+mv scripting1.txt  scripting1$(date +%d-%m-%Y).txt
 
-LOG_PATH=/home/ec2-user/sre/irvensdupuy-scripting-activity2.txt
-LOGFILE=$LOG_PATH/scripting1$DATE.txt
+mv scripting2.txt  scripting2$(date +%d-%m-%Y).txt
 
-echo $LOGFILE
-
+mv scripting3.txt  scripting3$(date +%d-%m-%Y).txt
