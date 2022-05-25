@@ -10,9 +10,6 @@ echo Current Date and Time is: ${CURRENTDATE}
 
 $PWD
 
+echo "There are $(ls | wc -l) files" in this directory
 
-$ ls | wc -l
-
-
-du -ah /home | sort -h -r | head -n 5
-
+du -ah /home/ec2-user/sre | sort -h -r | head -n 5
