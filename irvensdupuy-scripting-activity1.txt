@@ -1,0 +1,18 @@
+# /bin/sh 
+
+# Author: Irvens Dupuy 
+
+echo "$USER"
+
+CURRENTDATE=`date +"%Y-%m-%d %T"`
+echo Current Date and Time is: ${CURRENTDATE}
+
+
+$PWD
+
+
+$ ls | wc -l
+
+
+du -ah /home | sort -h -r | head -n 5
+
