@@ -1,0 +1,22 @@
+FILE=$(date +%Y%m%d)
+
+# Create an array of numbers
+numbers=($(seq 1 50))
+
+# Pick 5 numbers for each draw
+for i in {1..5}
+do
+	# Pick a random number
+	random=$(($RANDOM % 50 + 1))
+	
+	# Remove the number from the array
+	numbers=(${numbers[@]/$random})
+done
+
+# Pick a bonus number
+bonus=$(($RANDOM % 10 + 1))
+
+# Output the numbers to the file
+echo ${numbers[@]} $bonus >> $FILE.txt
+
+
