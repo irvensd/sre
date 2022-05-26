@@ -1,22 +1,47 @@
-FILE=$(date +%Y%m%d)
+# Set the date in the filename
+DATE=$(date +%Y%m%d)
+# Create the file
+echo "Creating file: $DATE.txt"
+touch $DATE.txt
+# Create the file if it doesn't exist
+if [ ! -f $DATE.txt ]; then
+    echo "Creating file: $DATE.txt"
+    touch $DATE.txt
+fi
 
-# Create an array of numbers
-numbers=($(seq 1 50))
+# Set the number of draws
+NUMBER_OF_DRAWS=5
+# Set the number of bonus balls
+NUMBER_OF_BONUS_BALLS=1
+# Set the number of numbers in the set
+NUMBER_OF_NUMBERS=50
 
-# Pick 5 numbers for each draw
-for i in {1..5}
-do
-	# Pick a random number
-	random=$(($RANDOM % 50 + 1))
-	
-	# Remove the number from the array
-	numbers=(${numbers[@]/$random})
+# Loop through the draws
+for (( i=1; i <= $NUMBER_OF_DRAWS; i++ )); do
+    echo "Draw $i:" >> $DATE.txt
+    # Loop through the numbers
+    for (( j=1; j <= $NUMBER_OF_NUMBERS; j++ )); do
+        # Pick a random number
+        NUMBER=$(($RANDOM % $NUMBER_OF_NUMBERS + 1))
+        # Check to see if the number is already in the set
+        if [ -z $(grep $NUMBER $DATE.txt) ]; then
+            # If not, add it to the set
+            echo "$NUMBER" >> $DATE.txt
+        else
+            # If it is, pick a new number
+            NUMBER=$(($RANDOM % $NUMBER_OF_NUMBERS + 1))
+            echo "$NUMBER" >> $DATE.txt
+        fi
+    done
+    # Pick a random number for the bonus ball
+    NUMBER=$(($RANDOM % $NUMBER_OF_BONUS_BALLS + 1))
+    # Check to see if the number is already in the set
+    if [ -z $(grep $NUMBER $DATE.txt) ]; then
+        # If not, add it to the set
+        echo "$NUMBER" >> $DATE.txt
+    else
+        # If it is, pick a new number
+        NUMBER=$(($RANDOM % $NUMBER_))
+	echo "$NUMBER" >> $DATE.txt
+    fi
 done
-
-# Pick a bonus number
-bonus=$(($RANDOM % 10 + 1))
-
-# Output the numbers to the file
-echo ${numbers[@]} $bonus >> $FILE.txt
-
-
