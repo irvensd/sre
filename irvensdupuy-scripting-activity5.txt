@@ -1,0 +1,16 @@
+
+
+echo "Please enter a number: "
+read number
+
+reverse=0
+
+while [ $number -gt 0 ]
+do
+	reverse=$(( $reverse * 10 + $number % 10 ))
+	number=$(( $number / 10 ))
+done
+
+echo "The reverse of the number is $reverse"
+
+
