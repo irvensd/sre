@@ -1,0 +1,20 @@
+
+echo "Type a password in:" 
+
+read passname
+
+# Check if the password is at least 8 characters long
+if [ $passname -lt 8 ]
+then
+    echo "Password is too short"
+    exit 1
+fi
+
+# Check if the password contains numbers and letters
+if ! [[ $passname =~ [0-9] && $passname  =~ [a-z] && $passname =~ [A-Z] ]]
+then
+    echo "Password must contain numbers and letters"
+    exit 1
+fi
+
+
