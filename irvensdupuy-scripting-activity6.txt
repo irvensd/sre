@@ -1,0 +1,22 @@
+if [ -z "$1" ]
+then
+  echo "Please enter a number"
+  exit 1
+fi
+
+if [ -z "$2" ]
+then
+  echo "Please enter a number"
+  exit 1
+fi
+
+if [ $1 -gt $2 ]
+then
+  echo "True"
+else
+  echo "False"
+fi
+
+echo "The difference between $1 and $2 is $(( $1 - $2 ))"
+
+
