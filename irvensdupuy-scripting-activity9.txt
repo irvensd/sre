@@ -1,0 +1,11 @@
+
+if [ -e $1 ]
+then
+	echo "Error: File already exists"
+	exit 1
+else
+	touch $1
+	echo "File created successfully"
+fi
+
+
