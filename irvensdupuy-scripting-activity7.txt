@@ -1,0 +1,156 @@
+#!/bin/sh
+
+# Set variables
+
+numberCorrect=0
+numberWrong=0
+
+# Set up the questions
+
+question1="True or false: Did Kobe Bryant play for the Los Angeles lakers? "
+answer1="True"
+
+question2="True or false:Basketball was developed by Dr. James A. Naismith.?"
+answer2="True"
+
+question3="True or false: An NBA time out is two minutes in length.?"
+answer3="False"
+
+question4="True or false: The first president of the USA was George Washington?"
+answer4="False"
+
+question5="True or false: The first president of the USA was George Washington?"
+answer5="True"
+
+question6="True or false: The first president of the USA was George Washington?"
+answer6="True"
+
+question7="True or false: The first president of the USA was George Washington?"
+answer7="True"
+
+question8="True or false: The first president of the USA was George Washington?"
+answer8="True"
+
+question9="True or false: The first president of the USA was George Washington?"
+answer9="True"
+
+question10="True or false: The first president of the USA was George Washington?"
+answer10="True"
+
+# Ask the questions
+
+echo "Welcome to the 10-question true or false quiz game!"
+echo "Please enter your name: "
+read name
+echo "Hello $name, let's get started!"
+
+echo $question1
+read answer1
+
+if [ $answer1 = "True" ]; 
+then
+	echo "Correct" 
+	echo "You got a point" 
+else 
+	echo "Incorrect" 
+fi
+
+echo $question2
+read answer2
+
+if [ $answer2 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question3
+read answer3
+
+if [ $answer3 = "False" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question4
+read answer4
+
+if [ $answer4 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question5
+read answer5
+
+if [ $answer5 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question6
+read answer6
+
+if [ $answer6 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi 
+
+echo $question7
+read answer7
+
+if [ $answer7 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question8
+read answer8
+
+if [ $answer8 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+echo $question9
+read answer9
+
+if [ $answer9 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
+
+
+echo $question10
+read answer10
+
+if [ $answer10 = "True" ];
+then
+        echo "Correct"
+        echo "You got a point"
+else
+        echo "Incorrect"
+fi
