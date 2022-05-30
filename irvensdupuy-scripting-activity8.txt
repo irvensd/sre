@@ -1,0 +1,36 @@
+
+#!/bin/sh
+
+# Prompts user for 5-10 integers and stores them in a variable.
+echo "Enter 5-10 integers: "
+read -a numbers
+
+# Prints out the product of the integers
+for i in $*
+do
+  product=$((product*i))
+done
+echo "The product of the integers are: $product"  
+
+
+# Prints sum of all five integers.
+sum=0
+for i in "${numbers[@]}"
+do
+	sum=$((sum+i))
+done
+echo "Sum of the numbers: $sum"
+
+# Prints average of all five integers.
+average=$((sum/5))
+echo "Average of the numbers: $average"
+
+# Prints largest of all five integers.
+largest=$(printf "%s\n" "${numbers[@]}" | sort -nr | head -1)
+echo "Largest of the numbers: $largest"
+
+# Prints smallest of all five integers.
+smallest=$(printf "%s\n" "${numbers[@]}" | sort -n | head -1)
+echo "Smallest of the numbers: $smallest"
+
+echo
