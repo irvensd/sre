@@ -1,0 +1,14 @@
+if [ -e $1 ] && [ -e $2 ]
+then
+	if [ -z "$(comm -12 $1 $2)" ]
+	then
+		echo "No common elements"
+	else
+		echo "Common elements:"
+		comm -12 $1 $2
+	fi
+else
+	echo "File does not exist"
+fi
+
+
