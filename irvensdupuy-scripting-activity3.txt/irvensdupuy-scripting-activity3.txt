@@ -1,47 +1,76 @@
-# Set the date in the filename
-DATE=$(date +%Y%m%d)
-# Create the file
-echo "Creating file: $DATE.txt"
-touch $DATE.txt
-# Create the file if it doesn't exist
-if [ ! -f $DATE.txt ]; then
-    echo "Creating file: $DATE.txt"
-    touch $DATE.txt
-fi
+# Create a file with the date in the name
+date=$(date +%Y-%m-%d)
+filename="$date.txt"
 
-# Set the number of draws
-NUMBER_OF_DRAWS=5
-# Set the number of bonus balls
-NUMBER_OF_BONUS_BALLS=1
-# Set the number of numbers in the set
-NUMBER_OF_NUMBERS=50
+# Create a function to create the file
+function createfile {
+	touch $filename
+}
 
-# Loop through the draws
-for (( i=1; i <= $NUMBER_OF_DRAWS; i++ )); do
-    echo "Draw $i:" >> $DATE.txt
-    # Loop through the numbers
-    for (( j=1; j <= $NUMBER_OF_NUMBERS; j++ )); do
-        # Pick a random number
-        NUMBER=$(($RANDOM % $NUMBER_OF_NUMBERS + 1))
-        # Check to see if the number is already in the set
-        if [ -z $(grep $NUMBER $DATE.txt) ]; then
-            # If not, add it to the set
-            echo "$NUMBER" >> $DATE.txt
-        else
-            # If it is, pick a new number
-            NUMBER=$(($RANDOM % $NUMBER_OF_NUMBERS + 1))
-            echo "$NUMBER" >> $DATE.txt
-        fi
-    done
-    # Pick a random number for the bonus ball
-    NUMBER=$(($RANDOM % $NUMBER_OF_BONUS_BALLS + 1))
-    # Check to see if the number is already in the set
-    if [ -z $(grep $NUMBER $DATE.txt) ]; then
-        # If not, add it to the set
-        echo "$NUMBER" >> $DATE.txt
-    else
-        # If it is, pick a new number
-        NUMBER=$(($RANDOM % $NUMBER_))
-	echo "$NUMBER" >> $DATE.txt
-    fi
-done
+# Create a function to generate the lottery numbers
+function generatelottery {
+	for i in {1..5}
+	do
+		lottery+=($((RANDOM%50+1)))
+	done
+	bonus=$((RANDOM%10+1))
+}
+
+# Create a function to write the lottery numbers to the file
+function writetofile {
+	for i in ${lottery[@]}
+	do
+		echo $i >> $filename
+	done
+	echo $bonus >> $filename
+}
+
+# Create a function to check the lottery numbers
+function checklottery {
+	for i in ${lottery[@]}
+	do
+		if [[ $i -eq $1 ]]
+		then
+			matches=$((matches+1))
+		fi
+	done
+	if [[ $bonus -eq $1 ]]
+	then
+		matches=$((matches+1))
+	fi
+}
+
+# Create a function to output the results
+function outputresult {
+	echo "The lottery numbers are:"
+	for i in ${lottery[@]}
+	do
+		echo $i
+	done
+	echo "The bonus number is:"
+	echo $bonus
+	echo "You matched $matches numbers"
+}
+
+# Create a function to check if the file exists and if not create it
+function checkfile {
+	if [[ -f $filename ]]
+	then
+		echo "File exists"
+	else
+		createfile
+	fi
+}
+
+# Create a function to run the program
+function runprogram {
+	checkfile
+	generatelottery
+	writetofile
+	read -p "Enter a number to check: " number
+	checklottery $number
+	outputresult
+}
+
+# Run the program
+runprogram
